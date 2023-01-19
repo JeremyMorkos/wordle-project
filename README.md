@@ -11,4 +11,5 @@ Project submission for GA flex course
 + style container with grid layout 
 
 ## Javascript
-+ 
++ Select the keyboard with DOM and create a function event listener and test output in console.
++ set an alert with instructions
