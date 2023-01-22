@@ -10,24 +10,97 @@ gameInstructions.className = 'instruction-alert'
 gameInstructions.innerText = alert("Wordle Instructions:\n1. You have six guesses for the daily word\n2. Type your guess and hit the enter button on the virtual keyboard.\n3. If the colour of the tile turns yellow, that means you picked the right letter but it is in the wrong spot. If the colour turns green, that means you chose the right letter in the right spot. If the colour turns grey that means that letter is not in the word.\nGoodluck!")
 
 }
-instructionalAlert()
-
-
-
-//3. Get input function for keyboard and test in html
-
+// instructionalAlert()
+//3. get text to flow into the grid
 const keys = document.querySelectorAll('.key')
-console.log(keys)
+const rows = document.querySelectorAll('.row')
+const answerMessage = document.querySelector('.answer-message')
+const deleteBtn = document.querySelector('.delete')
+const enterBtn = document.querySelector('.enter')
+let wordGenerate = validWords[Math.floor(Math.random() * validWords.length)]
 
+let counter = 0;
+
+console.log(answerMessage)
+
+function keyEntry(){
 
 keys.forEach(key =>{
-    key.addEventListener('click', function(){
-        console.log(key.innerText)
-  
+    key.addEventListener('click', function(event){
+    const letter = event.target.innerText.toUpperCase()
+   
+    if (counter <= 4){
+        // enterWord()
+        rows[counter].innerText = letter
+        counter + 1
+    }
+    if (counter <= 9 ){
+        rows[counter].innerText = letter
+        counter + 1
+    }
+    if (counter <= 14 ){
+        rows[counter].innerText = letter
+        counter + 1
+    }
+    if (counter <= 19 ){
+        rows[counter].innerText = letter
+        counter + 1
+    }
+    if (counter <= 24 ){
+        rows[counter].innerText = letter
+        counter + 1
+    }
+    if (counter <= 29 ){
+        rows[counter].innerText = letter
+        counter ++
+    }
+    console.log(counter)
+   })
+   })
+   console.log(counter)
+}
 
-    })
+keyEntry()
+
+// create a key function to delete and submit each line of text grab the counter with the row text from key entry function and use it in the delete btn. 
+function deleteWord (){
+   
+deleteBtn.addEventListener('click', function () {
+    rows[counter -1].innerText = ''
+    counter -- 
+
 })
+}
+deleteWord()
+
+console.log()
+
+function enterWord() {
+enterBtn.addEventListener('click', function(){
+checkWord()
+
+})
+}
+enterWord()
+
+function checkWord() {
+if (counter < 5){
+    alert('enter more letters to continue')
+}
+
+
+}
+// checkWord()
+
+
+// get random word
+
+// match it with users word
+
+// variable  math.floor and math.random
+
+// match letters (regex)
 
 
 
-// const gridContainer = document.getElementsByClassName('.container')
+//5. Create function to find the daily word match 
