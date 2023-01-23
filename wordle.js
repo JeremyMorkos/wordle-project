@@ -14,23 +14,25 @@ gameInstructions.innerText = alert("Wordle Instructions:\n1. You have six guesse
 //3. get text to flow into the grid
 const keys = document.querySelectorAll('.key')
 const rows = document.querySelectorAll('.row')
-const answerMessage = document.querySelector('.answer-message')
 const deleteBtn = document.querySelector('.delete')
 const enterBtn = document.querySelector('.enter')
 let wordGenerate = validWords[Math.floor(Math.random() * validWords.length)]
+let wordSplit = wordGenerate.split('')
 
+
+console.log('The daily word is:' + wordGenerate)
+// console.log(checkedLetters)
 let counter = 0;
 
-console.log(answerMessage)
+
 
 function keyEntry(){
 
 keys.forEach(key =>{
     key.addEventListener('click', function(event){
     const letter = event.target.innerText.toUpperCase()
-   
+ 
     if (counter <= 4){
-        // enterWord()
         rows[counter].innerText = letter
         counter + 1
     }
@@ -54,13 +56,16 @@ keys.forEach(key =>{
         rows[counter].innerText = letter
         counter ++
     }
-    console.log(counter)
+    
    })
    })
-   console.log(counter)
+
 }
 
 keyEntry()
+
+
+
 
 // create a key function to delete and submit each line of text grab the counter with the row text from key entry function and use it in the delete btn. 
 function deleteWord (){
@@ -73,34 +78,28 @@ deleteBtn.addEventListener('click', function () {
 }
 deleteWord()
 
-console.log()
 
-function enterWord() {
+function enterWord(enteredWord) {
+    // for(let i = 0; i< 5; i++) {// setting a number value to give to the checkUserGuess
 enterBtn.addEventListener('click', function(){
-checkWord()
-
+console.log('clicked')
+// checkUserGuess(i) // calling the function when enter is hit
 })
 }
 enterWord()
 
-function checkWord() {
-if (counter < 5){
-    alert('enter more letters to continue')
-}
+// function showMessage (){
+// const message = document.createElement('p')
+// message.textContent = alert('you guessed right!')
 
+// }
 
-}
-// checkWord()
+// check letters 
+//compare guess to word
 
-
-// get random word
-
-// match it with users word
-
-// variable  math.floor and math.random
-
-// match letters (regex)
-
-
-
-//5. Create function to find the daily word match 
+// function checkUserGuess (position) {
+//     console.log(position)
+//     let guessedLetter = rows[counter -1].textContent.charAt(position) // checking what number it is in the row
+//     let answerLetters = wordGenerate.charAt(position) // checking what number it is in the letter.
+//     console.log(guessedLetter , answerLetters)
+// }
