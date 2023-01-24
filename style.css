@@ -1,3 +1,5 @@
+
+
 body{
     max-width: 1000px;
     margin: auto;
@@ -16,49 +18,56 @@ div.contiainer{
     
 }
 
-.row-1{
+.row, .row_1, .row_2, .row_3, .row_4, .row_5, .row_6{
     border: 1px solid black;
     height: 60px;
     width: 60px;
     margin:2px;
-
+    text-align: center;
+    font-size: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: ;
 }
 
-.row-2{
-    border: 1px solid black;
-    height: 60px;
-    width: 60px;
-    margin:2px;
-}
-.row-3{
-    border: 1px solid black;
-    height: 60px;
-    width: 60px;
-    margin:2px;
+.keyboard{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2px;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: center;
 }
 
-.row-4{
-    border: 1px solid black;
-    height: 60px;
+.enter{
+    padding:5px;
+    margin:3px;
+    height: 30px;
     width: 60px;
-    margin:2px;
-}
+    font-size: 14px;
+    color: white;
+    background-color: rgb(253, 20, 20);
+    border: 1px solid black;
+    border-radius: 1px;
+    box-shadow: 5px 5px 5px 5px rgba(0,0,0,.8);
 
-.row-5{
-    border: 1px solid black;
-    height: 60px;
-    width: 60px;
-    margin:2px;
 }
-
-.row-6{
-    border: 1px solid black;
-    height: 60px;
+.delete{
+    padding:5px;
+    margin:3px;
+    height: 30px;
     width: 60px;
-    margin:2px;
+    font-size: 14px;
+    color: white;
+    background-color: rgb(253, 20, 20);
+    border: 1px solid black;
+    border-radius: 1px;
+    box-shadow: 5px 5px 5px 5px rgba(0,0,0,.8);
+
 }
 
 .key{
+    padding:5px;
+    margin:3px;
     height: 30px;
     width: 30px;
     font-size: 14px;
@@ -68,43 +77,33 @@ div.contiainer{
     border-radius: 1px;
     box-shadow: 5px 5px 5px 5px rgba(0,0,0,.8);
 }
-
-#row-0{
-    padding: 5px;
-    display:flex;
-    justify-content:center;
-    align-items: center;
-    gap: 10px;
- 
-}
-#row-1{
-    padding: 5px;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    
-
-}
-#row-2{
-    padding: 5px;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-
-}
-#row-3{
-    padding: 5px;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    gap:10px;
-
+.key-call{
+    padding:5px;
+    margin:3px;
+    height: 30px;
+    width: 60px;
+    font-size: 14px;
+    color: white;
+    background-color: rgb(253, 20, 20);
+    border: 1px solid black;
+    border-radius: 1px;
+    box-shadow: 5px 5px 5px 5px rgba(0,0,0,.8);
 }
 
 .key:active{
     cursor: pointer;
     box-shadow: 2px 2px 2px 2px rgba(72, 70, 70, 0.8);
 }
+
+.delete:active{
+    cursor: pointer;
+    box-shadow: 2px 2px 2px 2px rgba(72, 70, 70, 0.8);
+}
+
+.enter:active{
+    cursor: pointer;
+    box-shadow: 2px 2px 2px 2px rgba(72, 70, 70, 0.8);
+}
+
+
 

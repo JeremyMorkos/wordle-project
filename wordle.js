@@ -17,89 +17,68 @@ const rows = document.querySelectorAll('.row')
 const deleteBtn = document.querySelector('.delete')
 const enterBtn = document.querySelector('.enter')
 let wordGenerate = validWords[Math.floor(Math.random() * validWords.length)]
-let wordSplit = wordGenerate.split('')
 
 
-console.log('The daily word is:' + wordGenerate)
-// console.log(checkedLetters)
+console.log('The daily word is:'  +  wordGenerate) 
+
 let counter = 0;
-
-
-
-function keyEntry(){
-
+const texts = ['','','','','','']  // store the users letter choice
+const checked = [true, false, false,false, false, false, false] // checks if user is right changes from false to true if the user has guessed.
+        // start true to allow starting step and the last false checks the last guess. 
+    
 keys.forEach(key =>{
     key.addEventListener('click', function(event){
     const letter = event.target.innerText.toUpperCase()
+
+
+    const index = (counter - ( counter % 5))/ 5  // gets which row the user is inputing a letter in what ur currently on
+    console.log(index)
+    const letterIndex = counter % 5 // which letter in the row of the guess the user is on. 
+    console.log(letterIndex)
+    if(index > 0){
+    if (letterIndex == 0 && checked[index] != true){  // 
+        return;
+    }
+}
+    
+    rows[counter].innerText = letter // user input of letter
+    texts[index] += letter 
  
-    if (counter <= 4){
-        rows[counter].innerText = letter
-        counter + 1
-    }
-    if (counter <= 9 ){
-        rows[counter].innerText = letter
-        counter + 1
-    }
-    if (counter <= 14 ){
-        rows[counter].innerText = letter
-        counter + 1
-    }
-    if (counter <= 19 ){
-        rows[counter].innerText = letter
-        counter + 1
-    }
+    console.log(texts)
     if (counter <= 24 ){
         rows[counter].innerText = letter
         counter + 1
     }
     if (counter <= 29 ){
-        rows[counter].innerText = letter
-        counter ++
-    }
-    
+      counter ++
+    }  
    })
    })
 
-}
-
-keyEntry()
 
 
-
-
-// create a key function to delete and submit each line of text grab the counter with the row text from key entry function and use it in the delete btn. 
-function deleteWord (){
-   
 deleteBtn.addEventListener('click', function () {
+    const letterIndex = counter % 5
+    if(letterIndex == 0 && checked )return // we dont want the user to be allowed to delete the 
     rows[counter -1].innerText = ''
     counter -- 
-
 })
-}
-deleteWord()
 
 
-function enterWord(enteredWord) {
-    // for(let i = 0; i< 5; i++) {// setting a number value to give to the checkUserGuess
 enterBtn.addEventListener('click', function(){
-console.log('clicked')
-// checkUserGuess(i) // calling the function when enter is hit
+    const index = (counter - ( counter % 5))/ 5  
+    const letterIndex = counter % 5
+
+    if(letterIndex == 0 && index !=0){
+   
+        if(texts[index - 1] == wordGenerate){
+            alert('you are right')
+        } else{
+            alert('try again')
+        } 
+        checked[index] = true // allows for the user to continue top the next row.  grabbing the value in the arr
+    }  
+    
 })
-}
-enterWord()
 
-// function showMessage (){
-// const message = document.createElement('p')
-// message.textContent = alert('you guessed right!')
 
-// }
-
-// check letters 
-//compare guess to word
-
-// function checkUserGuess (position) {
-//     console.log(position)
-//     let guessedLetter = rows[counter -1].textContent.charAt(position) // checking what number it is in the row
-//     let answerLetters = wordGenerate.charAt(position) // checking what number it is in the letter.
-//     console.log(guessedLetter , answerLetters)
-// }
