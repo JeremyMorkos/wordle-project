@@ -29,6 +29,19 @@ div.contiainer{
     background-color: ;
 }
 
+.correct {
+
+    background-color: green;
+}
+
+.yellow {
+    background-color: gold;
+}
+
+.wrong{
+    background-color: grey;
+}
+
 .keyboard{
     display: flex;
     flex-wrap: wrap;
