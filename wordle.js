@@ -18,9 +18,9 @@ const deleteBtn = document.querySelector('.delete')
 const enterBtn = document.querySelector('.enter')
 let wordGenerate = validWords[Math.floor(Math.random() * validWords.length)]
 
-
 console.log('The daily word is:'  +  wordGenerate) 
 
+let gameState = true
 let counter = 0;
 const texts = ['','','','','','']  // store the users letter choice
 const checked = [true, false, false,false, false, false, false] // checks if user is right changes from false to true if the user has guessed.
@@ -28,13 +28,16 @@ const checked = [true, false, false,false, false, false, false] // checks if use
     
 keys.forEach(key =>{
     key.addEventListener('click', function(event){
+
+        if ( gameState == false){ // if gamestate is false stop function
+            return;
+        }
     const letter = event.target.innerText.toUpperCase()
-
-
+    
     const index = (counter - ( counter % 5))/ 5  // gets which row the user is inputing a letter in what ur currently on
-    console.log(index)
+    // console.log(index)
     const letterIndex = counter % 5 // which letter in the row of the guess the user is on. 
-    console.log(letterIndex)
+    // console.log(letterIndex)
     if(index > 0){
     if (letterIndex == 0 && checked[index] != true){  // 
         return;
@@ -55,28 +58,46 @@ keys.forEach(key =>{
    })
    })
 
-
-
 deleteBtn.addEventListener('click', function () {
     const letterIndex = counter % 5
-    if(letterIndex == 0 && checked )return // we dont want the user to be allowed to delete the 
+    if(letterIndex == 0 && checked )return 
     rows[counter -1].innerText = ''
     counter -- 
 })
-
 
 enterBtn.addEventListener('click', function(){
     const index = (counter - ( counter % 5))/ 5  
     const letterIndex = counter % 5
 
     if(letterIndex == 0 && index !=0){
-   
-        if(texts[index - 1] == wordGenerate){
-            alert('you are right')
-        } else{
-            alert('try again')
-        } 
-        checked[index] = true // allows for the user to continue top the next row.  grabbing the value in the arr
+
+        let correctWordCounter = 0;
+        let numberOfCorrect = 0;
+        for (const text of texts[index -1]){
+            const userGuess = correctWordCounter + (index-1)*5
+            if(text == wordGenerate[correctWordCounter]){
+                rows[userGuess].classList.add('correct') 
+                numberOfCorrect ++    
+            }
+            else{
+                if (wordGenerate.includes(text)){
+                    rows[userGuess].classList.add('yellow')
+                }
+            else{
+                rows[userGuess].classList.add('wrong')
+            }
+            }
+            correctWordCounter ++
+        }
+        if (numberOfCorrect == 5){
+            gameState = false
+            alert('you won!')
+        }
+        if(index == 6){
+            gameState = false
+            alert('you lost')
+        }
+       checked[index] = true // allows for the user to continue top the  next row.  grabbing the value in the arr
     }  
     
 })
