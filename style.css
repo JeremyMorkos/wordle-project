@@ -1,4 +1,7 @@
 
+*{
+    background-color: #B36E5D;
+}
 
 body{
     max-width: 1000px;
@@ -6,7 +9,10 @@ body{
 }
 
 h1{
+    font-size: 50px;
     text-align: center;
+    color: #faf0e6;
+    font-family: Arial, Helvetica, sans-serif;;
 }
 
 div.contiainer{
@@ -16,30 +22,39 @@ div.contiainer{
     justify-content: center;
     padding:10px;
     
+    
 }
 
 .row, .row_1, .row_2, .row_3, .row_4, .row_5, .row_6{
-    border: 1px solid black;
+    border: 1px solid #faf0e6;
     height: 60px;
     width: 60px;
     margin:2px;
     text-align: center;
     font-size: 50px;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: ;
+    color: #faf0e6;
+    box-shadow: 5px 10px 10px rgba(0,0,0,.8);
+    
 }
 
 .correct {
 
-    background-color: green;
+    background-color: rgb(1, 112, 1);
+    transform: rotate(360deg);
+    transition-duration: 1.5s;
 }
 
 .yellow {
-    background-color: gold;
+    background-color: rgb(195, 167, 5);
+    transform: rotate(360deg);
+    transition-duration: 1.5s;
 }
 
 .wrong{
-    background-color: grey;
+    background-color: rgb(53, 53, 53);
+    transform: rotate(360deg);
+    transition-duration: 1.5s;
 }
 
 .keyboard{
@@ -54,11 +69,11 @@ div.contiainer{
 .enter{
     padding:5px;
     margin:3px;
-    height: 30px;
+    height: 40px;
     width: 60px;
     font-size: 14px;
-    color: white;
-    background-color: rgb(253, 20, 20);
+    color: black;
+    background-color:  #faf0e6;
     border: 1px solid black;
     border-radius: 1px;
     box-shadow: 5px 5px 5px 5px rgba(0,0,0,.8);
@@ -67,11 +82,11 @@ div.contiainer{
 .delete{
     padding:5px;
     margin:3px;
-    height: 30px;
+    height: 40px;
     width: 60px;
     font-size: 14px;
-    color: white;
-    background-color: rgb(253, 20, 20);
+    color:  black;
+    background-color: #faf0e6;
     border: 1px solid black;
     border-radius: 1px;
     box-shadow: 5px 5px 5px 5px rgba(0,0,0,.8);
@@ -81,27 +96,20 @@ div.contiainer{
 .key{
     padding:5px;
     margin:3px;
-    height: 30px;
-    width: 30px;
-    font-size: 14px;
-    color: white;
-    background-color: rgb(253, 20, 20);
+    height: 40px;
+    width: 40px;
+    font-size: 18px;
+    color: black;
+    background-color: #faf0e6;
     border: 1px solid black;
     border-radius: 1px;
     box-shadow: 5px 5px 5px 5px rgba(0,0,0,.8);
 }
-.key-call{
-    padding:5px;
-    margin:3px;
-    height: 30px;
-    width: 60px;
-    font-size: 14px;
-    color: white;
-    background-color: rgb(253, 20, 20);
-    border: 1px solid black;
-    border-radius: 1px;
-    box-shadow: 5px 5px 5px 5px rgba(0,0,0,.8);
+
+#letter-1{
+    margin-left: 24px;
 }
+
 
 .key:active{
     cursor: pointer;
