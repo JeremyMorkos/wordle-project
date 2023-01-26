@@ -12980,10 +12980,10 @@ const instructionalAlert = () => {
   const gameInstructions = document.createElement("p");
   gameInstructions.className = "instruction-alert";
   gameInstructions.innerText = alert(
-    "Wordle Instructions:\n1. You have six guesses for the daily word\n2. Type your guess and hit the enter button on the virtual keyboard.\n3. If the colour of the tile turns yellow, that means you picked the right letter but it is in the wrong spot. If the colour turns green, that means you chose the right letter in the right spot. If the colour turns grey that means that letter is not in the word.\nGoodluck!"
+    "Wordle 2.0 Instructions:\n1. You have six guesses for the daily word\n2. Type your guess and hit the enter button on the virtual keyboard.\n3. If the colour of the tile turns yellow, that means you picked the right letter but it is in the wrong spot. If the colour turns green, that means you chose the right letter in the right spot. If the colour turns grey that means that letter is not in the word.\nGoodluck!"
   );
 };
-// instructionalAlert()
+
 
 const keys = document.querySelectorAll(".key");
 const rows = document.querySelectorAll(".row");
@@ -12999,6 +12999,12 @@ let counter = 0;
 let texts = ["", "", "", "", "", ""];
 // use the array to skip over the rows  7th variable to complete the game, true is starting point
 const checked = [true, false, false, false, false, false, false];
+
+const rightLetterSound = new Audio('/Users/jeremym/sei/project1/wordle-project/mp3/mixkit-retro-game-notification-212.wav')
+
+//directs the player back to the rules of the game
+const infoButton = document.querySelector('.info')
+infoButton.addEventListener('click', instructionalAlert )
 
     // loop through each key in the keyboard html
 keys.forEach((key) => {
@@ -13053,30 +13059,31 @@ enterBtn.addEventListener("click", function () {
       const userGuess = correctWordCounter + (index - 1) * 5; 
       if (text == wordGenerate[correctWordCounter]) {
         rows[userGuess].classList.add("correct");
+        rightLetterSound.play()
         numberOfCorrect++;
       } else {
         if (wordGenerate.includes(text)) {
-          rows[userGuess].classList.add("yellow");
+          rows[userGuess].classList.add("position");
         } else {
           rows[userGuess].classList.add("wrong");
         }
       }
       correctWordCounter++;
     }
-    if (numberOfCorrect == 5) {
+    if (numberOfCorrect == 5) { 
       gameState = false;
-      alert("you won!");
+      alert("You Guessed right!");
       setTimeout(() => {
         document.location.reload();
       }, 6000);
     }
-    if (index == 6) {
+    else if (index == 6) {
       gameState = false;
-      alert("You lose");
+      alert("You guessed wrong - Try again!");
       answerMessage.innerText = "The answer was: " + wordGenerate;
       setTimeout(() => {
         document.location.reload();
-      }, 6000);
+      }, 8000); return
     }
     checked[index] = true; // allows for the user to continue top the  next row, grabbing the value in the array and initiating the game.
   }

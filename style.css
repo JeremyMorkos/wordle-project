@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Fredoka+One&family=Open+Sans:wght@300&display=swap');
 
 *{
-    background-color: #B36E5D;
+    background-color: #BFCAD0
 }
 
 body{
@@ -11,9 +12,30 @@ body{
 h1{
     font-size: 50px;
     text-align: center;
-    color: #8bf519eb;
-    font-family: Arial, Helvetica, sans-serif;;
+    color: #970C10;
+    font-family: 'Fredoka One', cursive;
+    
 }
+
+nav{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.info{
+   border: none;
+   background: none;
+}
+.image {
+   width: 30px;
+   border: none;
+ 
+}
+.image:hover{
+    border-radius:20px;
+    cursor:context-menu;
+    transform: scale(1.3);
+}
+
 
 div.contiainer{
     display: grid;
@@ -32,7 +54,7 @@ div.contiainer{
     margin:2px;
     text-align: center;
     font-size: 50px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Fredoka One', cursive;
     color: #faf0e6;
     box-shadow: 5px 10px 10px rgba(0,0,0,.8);
     
@@ -42,24 +64,26 @@ div.contiainer{
 
     background-color: rgb(1, 112, 1);
     transform: rotate(360deg);
-    transition-duration: 1.5s;
+    transition-duration: 1s;
 }
 
-.yellow {
+.position{
     background-color: rgb(195, 167, 5);
     transform: rotate(360deg);
-    transition-duration: 1.5s;
+    transition-duration: 1s;
 }
 
 .wrong{
     background-color: rgb(53, 53, 53);
     transform: rotate(360deg);
-    transition-duration: 1.5s;
+    transition-duration: 1s;
 }
 
 .answer{
     font-size: 20px;
     text-align: center;
+    color:#970C10;
+    font-family: 'Fredoka One', cursive;
 }
 
 .keyboard{
@@ -82,8 +106,10 @@ div.contiainer{
     border: 1px solid black;
     border-radius: 1px;
     box-shadow: 5px 5px 5px 5px black;
+    font-family: 'Fredoka One', cursive;
 
 }
+
 .delete{
     padding:5px;
     margin:3px;
@@ -95,6 +121,7 @@ div.contiainer{
     border: 1px solid black;
     border-radius: 1px;
     box-shadow: 5px 5px 5px 5px black;
+    font-family: 'Fredoka One', cursive;
 
 }
 
@@ -109,6 +136,7 @@ div.contiainer{
     border: 2px solid black;
     border-radius: 1px;
     box-shadow: 5px 5px 5px 5px black;
+    font-family: 'Fredoka One', cursive;
 }
 
 #letter-1{
