@@ -12984,66 +12984,73 @@ const instructionalAlert = () => {
   );
 };
 // instructionalAlert()
-//3. get text to flow into the grid
+
 const keys = document.querySelectorAll(".key");
 const rows = document.querySelectorAll(".row");
 const deleteBtn = document.querySelector(".delete");
 const enterBtn = document.querySelector(".enter");
+const answerMessage = document.querySelector(".answer");
 let wordGenerate = validWords[Math.floor(Math.random() * validWords.length)];
-
-console.log("The daily word is:" + wordGenerate);
-
+// gameState  - Using this to stop the game when won.
 let gameState = true;
+// use as a global index reference ( for letters and squares)
 let counter = 0;
-const texts = ["", "", "", "", "", ""]; // store the users letter choice
-const checked = [true, false, false, false, false, false, false]; // checks if user is right changes from false to true if the user has guessed.
-// start true to allow starting step and the last false checks the last guess.
+// store the players guess in the array for comparison
+let texts = ["", "", "", "", "", ""];
+// use the array to skip over the rows  7th variable to complete the game, true is starting point
+const checked = [true, false, false, false, false, false, false];
 
+    // loop through each key in the keyboard html
 keys.forEach((key) => {
   key.addEventListener("click", function (event) {
+    // if gamestate is false stop function event. -  reference the last false in checked array
     if (gameState == false) {
-      // if gamestate is false stop function
       return;
     }
     const letter = event.target.innerText.toUpperCase();
+    //what the current column position of the guessed letter is in the grid - stops user from entering after 5th square
+    let index = parseInt(counter / 5);
 
-    const index = (counter - (counter % 5)) / 5; // gets which row the user is inputing a letter in what ur currently on
-    // console.log(index)
-    const letterIndex = counter % 5; // which letter in the row of the guess the user is on.
-    // console.log(letterIndex)
+    // which letter in each row the players guess is on. 0-4
+    const letterIndex = counter % 5;
+
+    // stops the user from inputting more then 1 row at a time - reference the checked index array to start
     if (index > 0 && letterIndex == 0 && checked[index] != true) {
       return;
     }
-
-    rows[counter].innerText = letter; // user input of letter
+    // input players letter and count onto next box, adds the texts index to the player array as the letter
+    rows[counter].innerText = letter;
     texts[index] += letter;
     counter++;
-    console.log(texts);
-
-    //
+    console.log(letter);
   });
 });
 
 deleteBtn.addEventListener("click", function () {
-    const index = (counter - (counter % 5)) / 5;
+  let index = parseInt(counter / 5);
   const letterIndex = counter % 5;
-  console.log(letterIndex)
+  // removes letter from the row, checks where the letter is in comparison to the checked array
   if (letterIndex == 0 && checked[index]) return;
   rows[counter - 1].innerText = "";
-  texts[index] = texts[index].slice(0, texts[index].length - 2)// index + 1 so remove 2
+  // stops the letter from carrying over to the next square on a different column causing a bug
+  if (letterIndex == 0 && !checked[index] && texts[index - 1].length == 5) {
+    index--;
+  }
+  // removes the letter the player inputs from the "texts array"
+  texts[index] = texts[index].slice(0, texts[index].length - 1);
   counter--;
-
 });
 
 enterBtn.addEventListener("click", function () {
-  const index = (counter - (counter % 5)) / 5;
+  let index = parseInt(counter / 5);
   const letterIndex = counter % 5;
-
+  // checks the player has filled in the first 5 letters in the first row, which allows them to use the enter function
   if (letterIndex == 0 && index != 0) {
     let correctWordCounter = 0;
     let numberOfCorrect = 0;
+  //looping through the players text input and compares the value of the right letters and if the word is complete
     for (const text of texts[index - 1]) {
-      const userGuess = correctWordCounter + (index - 1) * 5;
+      const userGuess = correctWordCounter + (index - 1) * 5; 
       if (text == wordGenerate[correctWordCounter]) {
         rows[userGuess].classList.add("correct");
         numberOfCorrect++;
@@ -13059,12 +13066,21 @@ enterBtn.addEventListener("click", function () {
     if (numberOfCorrect == 5) {
       gameState = false;
       alert("you won!");
-      return;
+      setTimeout(() => {
+        document.location.reload();
+      }, 6000);
     }
     if (index == 6) {
       gameState = false;
-      alert("you lost");
+      alert("You lose");
+      answerMessage.innerText = "The answer was: " + wordGenerate;
+      setTimeout(() => {
+        document.location.reload();
+      }, 6000);
     }
-    checked[index] = true; // allows for the user to continue top the  next row.  grabbing the value in the arr
+    checked[index] = true; // allows for the user to continue top the  next row, grabbing the value in the array and initiating the game.
   }
 });
+
+
+console.log(wordGenerate)
