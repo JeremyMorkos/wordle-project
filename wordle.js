@@ -13079,7 +13079,7 @@ enterBtn.addEventListener("click", function () {
       youWinMessage.innerText = "You win!"
       setTimeout(() => {
         document.location.reload();
-      }, 5000);
+      }, 4000);
     }
     else if (index == 6) {
       gameState = false;
@@ -13087,10 +13087,9 @@ enterBtn.addEventListener("click", function () {
       answerMessage.innerText = "The answer was : "  + wordGenerate;
       setTimeout(() => {
         document.location.reload();
-      }, 5000); return
+      }, 4000); return
     }
-    checked[index] = true;
-    console.log(checked[index]) // allows for the user to continue top the  next row, grabbing the value in the array and initiating the game.
+    checked[index] = true; 
   }
 });
 

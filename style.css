@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Fredoka+One&family=Open+Sans:wght@300&display=swap');
 
-*{
+/* *{
     background-color: #BFCAD0
-}
+} */
 
 body{
     max-width: 1000px;
     margin: auto;
+    background-color: #BFCAD0;
 }
 
 h1{
@@ -21,7 +22,6 @@ nav{
     display: flex;
     flex-direction: row-reverse;
 }
-
 .info{
    border: none;
    background: none;
@@ -48,8 +48,8 @@ div.contiainer{
     
 }
 
-.row, .row_1, .row_2, .row_3, .row_4, .row_5, .row_6{
-    border: 1px solid #faf0e6;
+.row{
+    border: 1px solid #101010;
     height: 60px;
     width: 60px;
     margin:2px;
@@ -57,7 +57,7 @@ div.contiainer{
     font-size: 50px;
     font-family: 'Fredoka One', cursive;
     color: #faf0e6;
-    box-shadow: 5px 10px 10px rgba(0,0,0,.8);
+    box-shadow: 1px 1px 1px rgba(0,0,0,.8);
     
 }
 
@@ -106,8 +106,7 @@ div.contiainer{
 
 .enter{
     padding:5px;
-    margin:3px;
-    height: 40px;
+    height: 30px;
     width: 60px;
     font-size: 14px;
     color: black;
@@ -121,8 +120,7 @@ div.contiainer{
 
 .delete{
     padding:5px;
-    margin:3px;
-    height: 40px;
+    height: 30px;
     width: 60px;
     font-size: 14px;
     color:  black;
@@ -137,8 +135,8 @@ div.contiainer{
 .key{
     padding:5px;
     margin:3px;
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
     font-size: 18px;
     color: black;
     background-color: #faf0e6;
@@ -166,6 +164,4 @@ div.contiainer{
     cursor: pointer;
     box-shadow: 2px 2px 2px 2px rgba(72, 70, 70, 0.8);
 }
-
-
 
