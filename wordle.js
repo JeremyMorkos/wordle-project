@@ -12974,21 +12974,22 @@ const validWords = [
   "ZYMIC",
 ];
 
-//2. Set instructions
+//2. Set instructions for the game
 
 const instructionalAlert = () => {
   const gameInstructions = document.createElement("p");
   gameInstructions.className = "instruction-alert";
   gameInstructions.innerText = alert(
-    "Wordle 2.0 Instructions:\n1. You have six guesses for the daily word\n2. Type your guess and hit the enter button on the virtual keyboard.\n3. If the colour of the tile turns yellow, that means you picked the right letter but it is in the wrong spot. If the colour turns green, that means you chose the right letter in the right spot. If the colour turns grey that means that letter is not in the word.\nGoodluck!"
+    "Wordle 2.0 Instructions:\n1. You have six guesses for the daily word\n2. Type your 5 letter word guess and hit the enter button on the virtual keyboard.\n3. If the colour of the tile turns yellow, that means you picked the right letter but it is in the wrong spot. If the colour turns green, that means you chose the right letter in the right spot. If the colour turns grey that means that letter is not in the word.\nGoodluck!"
   );
 };
-
 
 const keys = document.querySelectorAll(".key");
 const rows = document.querySelectorAll(".row");
 const deleteBtn = document.querySelector(".delete");
 const enterBtn = document.querySelector(".enter");
+const youWinMessage = document.querySelector(".you-win");
+const youLostMessage = document.querySelector(".you-lost");
 const answerMessage = document.querySelector(".answer");
 let wordGenerate = validWords[Math.floor(Math.random() * validWords.length)];
 // gameState  - Using this to stop the game when won.
@@ -12997,8 +12998,8 @@ let gameState = true;
 let counter = 0;
 // store the players guess in the array for comparison
 let texts = ["", "", "", "", "", ""];
-// use the array to skip over the rows  7th variable to complete the game, true is starting point
-const checked = [true, false, false, false, false, false, false];
+// use the array as comparison logic for gamestate
+const checked = [true, false];
 
 const rightLetterSound = new Audio('/Users/jeremym/sei/project1/wordle-project/mp3/mixkit-retro-game-notification-212.wav')
 
@@ -13010,20 +13011,17 @@ infoButton.addEventListener('click', instructionalAlert )
 keys.forEach((key) => {
   key.addEventListener("click", function (event) {
     // if gamestate is false stop function event. -  reference the last false in checked array
-    if (gameState == false) {
+    if (gameState == false) { // adds the condition to the game
       return;
     }
     const letter = event.target.innerText.toUpperCase();
     //what the current column position of the guessed letter is in the grid - stops user from entering after 5th square
     let index = parseInt(counter / 5);
-
-    // which letter in each row the players guess is on. 0-4
-    const letterIndex = counter % 5;
-
+  
     // stops the user from inputting more then 1 row at a time - reference the checked index array to start
-    if (index > 0 && letterIndex == 0 && checked[index] != true) {
+    if (checked[index] != true) { // if index is not true the end game.
       return;
-    }
+    }     
     // input players letter and count onto next box, adds the texts index to the player array as the letter
     rows[counter].innerText = letter;
     texts[index] += letter;
@@ -13033,13 +13031,15 @@ keys.forEach((key) => {
 });
 
 deleteBtn.addEventListener("click", function () {
+  // column starts on 1
   let index = parseInt(counter / 5);
-  const letterIndex = counter % 5;
+  // row starts on 0 
+  const letterIndex = counter % 5; 
   // removes letter from the row, checks where the letter is in comparison to the checked array
   if (letterIndex == 0 && checked[index]) return;
   rows[counter - 1].innerText = "";
   // stops the letter from carrying over to the next square on a different column causing a bug
-  if (letterIndex == 0 && !checked[index] && texts[index - 1].length == 5) {
+  if (letterIndex == 0 && texts[index - 1].length == 5) {
     index--;
   }
   // removes the letter the player inputs from the "texts array"
@@ -13047,14 +13047,17 @@ deleteBtn.addEventListener("click", function () {
   counter--;
 });
 
+
 enterBtn.addEventListener("click", function () {
   let index = parseInt(counter / 5);
-  const letterIndex = counter % 5;
+  const letterIndex = counter % 5; 
+
   // checks the player has filled in the first 5 letters in the first row, which allows them to use the enter function
   if (letterIndex == 0 && index != 0) {
     let correctWordCounter = 0;
     let numberOfCorrect = 0;
-  //looping through the players text input and compares the value of the right letters and if the word is complete
+
+  //looping through the players text input and compares the value of the right letters and if the word is complete - while tracking the position in the grid
     for (const text of texts[index - 1]) {
       const userGuess = correctWordCounter + (index - 1) * 5; 
       if (text == wordGenerate[correctWordCounter]) {
@@ -13070,22 +13073,24 @@ enterBtn.addEventListener("click", function () {
       }
       correctWordCounter++;
     }
+    // gives the conditions for win or lose game.
     if (numberOfCorrect == 5) { 
       gameState = false;
-      alert("You Guessed right!");
+      youWinMessage.innerText = "You win!"
       setTimeout(() => {
         document.location.reload();
-      }, 6000);
+      }, 5000);
     }
     else if (index == 6) {
       gameState = false;
-      alert("You guessed wrong - Try again!");
-      answerMessage.innerText = "The answer was: " + wordGenerate;
+      youLostMessage.innerText = "You lost - try again"
+      answerMessage.innerText = "The answer was : "  + wordGenerate;
       setTimeout(() => {
         document.location.reload();
-      }, 8000); return
+      }, 5000); return
     }
-    checked[index] = true; // allows for the user to continue top the  next row, grabbing the value in the array and initiating the game.
+    checked[index] = true;
+    console.log(checked[index]) // allows for the user to continue top the  next row, grabbing the value in the array and initiating the game.
   }
 });
 

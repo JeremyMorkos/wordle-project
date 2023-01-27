@@ -21,29 +21,30 @@ nav{
     display: flex;
     flex-direction: row-reverse;
 }
+
 .info{
    border: none;
    background: none;
 }
+
 .image {
    width: 30px;
    border: none;
  
 }
+
 .image:hover{
     border-radius:20px;
     cursor:context-menu;
     transform: scale(1.3);
 }
 
-
 div.contiainer{
     display: grid;
     grid-template-columns: auto auto auto auto auto;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
     justify-content: center;
-    padding:10px;
-    
+    padding:10px;    
     
 }
 
@@ -79,12 +80,20 @@ div.contiainer{
     transition-duration: 1s;
 }
 
-.answer{
+.answer, .you-lost{
     font-size: 20px;
     text-align: center;
     color:#970C10;
     font-family: 'Fredoka One', cursive;
 }
+
+.you-win{
+    font-size: 20px;
+    text-align: center;
+    color:#970C10;
+    font-family: 'Fredoka One', cursive;
+}
+
 
 .keyboard{
     display: flex;
@@ -103,7 +112,7 @@ div.contiainer{
     font-size: 14px;
     color: black;
     background-color:  #faf0e6;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 1px;
     box-shadow: 5px 5px 5px 5px black;
     font-family: 'Fredoka One', cursive;
@@ -118,7 +127,7 @@ div.contiainer{
     font-size: 14px;
     color:  black;
     background-color: #faf0e6;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 1px;
     box-shadow: 5px 5px 5px 5px black;
     font-family: 'Fredoka One', cursive;
@@ -140,9 +149,8 @@ div.contiainer{
 }
 
 #letter-1{
-    margin-left: 24px;
+    margin-left: 20px;
 }
-
 
 .key:active{
     cursor: pointer;
