@@ -26,6 +26,7 @@ The installation requirements for playing this game is to have;
 + could not delete all the letters in the array "text". 
 + can't stop the count from increasing in "letterIndex”, counter" and "index" variables although it doesn't seem to affect the game. 
 + enter button sound works even if letters are not filled in the entire row.
++ sound does not work when opening up through github pages.
 
 ## Notes
 I believe that in doing this project I have realised the importance of **planning thoroughly before putting any syntax on the screen**. I believe a better approach is to spend more time in the initial stages of development and execute an effective plan to help create an organised and readable code. I found that I had put logic in scope that did not work correctly which then created bugs. It was then difficult to structure the logic when refactoring halfway through the project. However, in doing this, I have researched and read extensively about functions and logical operators(w3 schools).Overall, this project has  helped me learn and develop more as a student. 
