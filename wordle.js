@@ -12974,8 +12974,7 @@ const validWords = [
   "ZYMIC",
 ];
 
-//2. Set instructions for the game
-
+// Set instructions for the game
 const instructionalAlert = () => {
   const gameInstructions = document.createElement("p");
   gameInstructions.className = "instruction-alert";
@@ -13007,7 +13006,7 @@ const rightLetterSound = new Audio('/Users/jeremym/sei/project1/wordle-project/m
 const infoButton = document.querySelector('.info')
 infoButton.addEventListener('click', instructionalAlert )
 
-    // loop through each key in the keyboard html
+// loop through each key in the keyboard html
 keys.forEach((key) => {
   key.addEventListener("click", function (event) {
     // if gamestate is false stop function event. -  reference the last false in checked array
@@ -13019,14 +13018,14 @@ keys.forEach((key) => {
     let index = parseInt(counter / 5);
   
     // stops the user from inputting more then 1 row at a time - reference the checked index array to start
-    if (checked[index] != true) { // if index is not true the end game.
+    if (checked[index] != true) { 
       return;
     }     
     // input players letter and count onto next box, adds the texts index to the player array as the letter
     rows[counter].innerText = letter;
     texts[index] += letter;
     counter++;
-    console.log(letter);
+   
   });
 });
 
@@ -13046,7 +13045,6 @@ deleteBtn.addEventListener("click", function () {
   texts[index] = texts[index].slice(0, texts[index].length - 1);
   counter--;
 });
-
 
 enterBtn.addEventListener("click", function () {
   let index = parseInt(counter / 5);
