@@ -12991,7 +12991,7 @@ const youWinMessage = document.querySelector(".you-win");
 const youLostMessage = document.querySelector(".you-lost");
 const answerMessage = document.querySelector(".answer");
 let wordGenerate = validWords[Math.floor(Math.random() * validWords.length)];
-// gameState  - Using this to stop the game when won.
+// gameState  - Using this to stop the game when won so you cannot keep entering letters in the grid.
 let gameState = true;
 // use as a global index reference ( for letters and squares)
 let counter = 0;
@@ -13009,8 +13009,8 @@ infoButton.addEventListener('click', instructionalAlert )
 // loop through each key in the keyboard html
 keys.forEach((key) => {
   key.addEventListener("click", function (event) {
-    // if gamestate is false stop function event. -  reference the last false in checked array
-    if (gameState == false) { // adds the condition to the game
+    // if gamestate is false stop function event. 
+    if (gameState == false) { 
       return;
     }
     const letter = event.target.innerText.toUpperCase();
