@@ -94,6 +94,7 @@ div.contiainer{
 .keyboard{
     display: flex;
     flex-wrap: wrap;
+    width:100%;
     padding: 2px;
     flex-direction: column;
     align-items: flex-start;
